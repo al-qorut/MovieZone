@@ -1,0 +1,640 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="6" by="lint 7.4.2" type="baseline" client="gradle" dependencies="false" name="AGP (7.4.2)" variant="all" version="7.4.2">
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (2041 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector."
+        errorLine1="      android:pathData=&quot;M2.001,7.726l0.618,0.449l-0.236,0.725L3,8.452l0.618,0.448l-0.236,-0.725L4,7.726h-0.764L3,7l-0.235,0.726zM4.001,9.726l0.618,0.449l-0.236,0.725l0.617,-0.448l0.618,0.448l-0.236,-0.725L6,9.726h-0.764L5,9l-0.235,0.726zM8.001,9.726l0.618,0.449l-0.236,0.725l0.617,-0.448l0.618,0.448l-0.236,-0.725l0.618,-0.449h-0.764L9,9l-0.235,0.726zM12.001,9.726l0.618,0.449l-0.236,0.725l0.617,-0.448l0.618,0.448l-0.236,-0.725l0.618,-0.449h-0.764L13,9l-0.235,0.726zM4.001,13.726l0.618,0.449l-0.236,0.725l0.617,-0.448l0.618,0.448l-0.236,-0.725l0.618,-0.449h-0.764L5,13l-0.235,0.726zM8.001,13.726l0.618,0.449l-0.236,0.725l0.617,-0.448l0.618,0.448l-0.236,-0.725l0.618,-0.449h-0.764L9,13l-0.235,0.726zM12.001,13.726l0.618,0.449l-0.236,0.725l0.617,-0.448l0.618,0.448l-0.236,-0.725l0.618,-0.449h-0.764L13,13l-0.235,0.726zM6.001,7.726l0.618,0.449l-0.236,0.725L7,8.452l0.618,0.448l-0.236,-0.725L8,7.726h-0.764L7,7l-0.235,0.726zM10.001,7.726l0.618,0.449l-0.236,0.725l0.617,-0.448l0.618,0.448l-0.236,-0.725l0.618,-0.449h-0.764L11,7l-0.235,0.726zM14.001,7.726l0.618,0.449l-0.236,0.725l0.617,-0.448l0.618,0.448l-0.236,-0.725l0.618,-0.449h-0.764L15,7l-0.235,0.726zM2.001,11.726l0.618,0.449l-0.236,0.725l0.617,-0.448l0.618,0.448l-0.236,-0.725l0.618,-0.449h-0.764L3,11l-0.235,0.726zM6.383,12.9L7,12.452l0.618,0.448l-0.236,-0.725l0.618,-0.449h-0.764L7,11l-0.235,0.726h-0.764l0.618,0.449zM10.001,11.726l0.618,0.449l-0.236,0.725l0.617,-0.448l0.618,0.448l-0.236,-0.725l0.618,-0.449h-0.764L11,11l-0.235,0.726zM14.001,11.726l0.618,0.449l-0.236,0.725l0.617,-0.448l0.618,0.448l-0.236,-0.725l0.618,-0.449h-0.764L15,11l-0.235,0.726zM2.001,15.726l0.618,0.449l-0.236,0.725l0.617,-0.448l0.618,0.448l-0.236,-0.725l0.618,-0.449h-0.764L3,15l-0.235,0.726zM6.383,16.9L7,16.452l0.618,0.448l-0.236,-0.725l0.618,-0.449h-0.764L7,15l-0.235,0.726h-0.764l0.618,0.449zM10.001,15.726l0.618,0.449l-0.236,0.725l0.617,-0.448l0.618,0.448l-0.236,-0.725l0.618,-0.449h-0.764L11,15l-0.235,0.726zM14.001,15.726l0.618,0.449l-0.236,0.725l0.617,-0.448l0.618,0.448l-0.236,-0.725l0.618,-0.449h-0.764L15,15l-0.235,0.726z&quot;"
+        errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_flag_us.xml"
+            line="16"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (829 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector."
+        errorLine1="    &lt;path android:fillColor=&quot;@color/dark_grey&quot; android:pathData=&quot;M19.5 12c0-0.23-0.01-0.45-0.03-0.68l1.86-1.41c0.4-0.3 0.51-0.86 0.26-1.3l-1.87-3.23c-0.25-0.44-0.79-0.62-1.25-0.42l-2.15 0.91c-0.37-0.26-0.76-0.49-1.17-0.68l-0.29-2.31C14.8 2.38 14.37 2 13.87 2h-3.73c-0.51 0-0.94 0.38-1 0.88L8.85 5.19c-0.41 0.19-0.8 0.42-1.17 0.68L5.53 4.96c-0.46-0.2-1-0.02-1.25 0.42L2.41 8.62c-0.25 0.44-0.14 0.99 0.26 1.3l1.86 1.41C4.51 11.55 4.5 11.77 4.5 12s0.01 0.45 0.03 0.68l-1.86 1.41c-0.4 0.3-0.51 0.86-0.26 1.3l1.87 3.23c0.25 0.44 0.79 0.62 1.25 0.42l2.15-0.91c0.37 0.26 0.76 0.49 1.17 0.68l0.29 2.31C9.2 21.62 9.63 22 10.13 22h3.73c0.5 0 0.93-0.38 0.99-0.88l0.29-2.31c0.41-0.19 0.8-0.42 1.17-0.68l2.15 0.91c0.46 0.2 1 0.02 1.25-0.42l1.87-3.23c0.25-0.44 0.14-0.99-0.26-1.3l-1.86-1.41c0.03-0.23 0.04-0.45 0.04-0.68zm-7.46 3.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z&quot;/>"
+        errorLine2="                                                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_settings_vector.xml"
+            line="3"
+            column="66"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.bg_sheet` appears to be unused"
+        errorLine1="&lt;shape xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;>"
+        errorLine2="^">
+        <location
+            file="src/main/res/drawable/bg_sheet.xml"
+            line="2"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.bg_transparen` appears to be unused">
+        <location
+            file="src/main/res/drawable/bg_transparen.png"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.color_primary_dark` appears to be unused"
+        errorLine1="    &lt;color name=&quot;color_primary_dark&quot;>#4CAF50&lt;/color>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="$HOME/Beasiswa/MovieZone/find/src/main/res/values/color.xml"
+            line="4"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.color_white` appears to be unused"
+        errorLine1="    &lt;color name=&quot;color_white&quot;>#FFFFFF&lt;/color>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="$HOME/Beasiswa/MovieZone/find/src/main/res/values/color.xml"
+            line="5"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.color_black` appears to be unused"
+        errorLine1="    &lt;color name=&quot;color_black&quot;>#000000&lt;/color>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="$HOME/Beasiswa/MovieZone/find/src/main/res/values/color.xml"
+            line="6"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.purple_500` appears to be unused"
+        errorLine1="    &lt;color name=&quot;purple_500&quot;>#FF6200EE&lt;/color>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="4"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.divider_grey` appears to be unused"
+        errorLine1="    &lt;color name=&quot;divider_grey&quot;>#55808080&lt;/color>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="14"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.splash_icon_background` appears to be unused"
+        errorLine1="    &lt;color name=&quot;splash_icon_background&quot;>#FFFFFF&lt;/color>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="22"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.splash_icon_color` appears to be unused"
+        errorLine1="    &lt;color name=&quot;splash_icon_color&quot;>#000000&lt;/color>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="23"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.brand_icon_color` appears to be unused"
+        errorLine1="    &lt;color name=&quot;brand_icon_color&quot;>#000000&lt;/color>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="24"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.splash_screen_background` appears to be unused"
+        errorLine1="    &lt;color name=&quot;splash_screen_background&quot;>#DCDCDC&lt;/color>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="25"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.layout.detail_movie` appears to be unused"
+        errorLine1="&lt;androidx.constraintlayout.widget.ConstraintLayout"
+        errorLine2="^">
+        <location
+            file="src/main/res/layout/detail_movie.xml"
+            line="2"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.dimen.sp_20` appears to be unused"
+        errorLine1="    &lt;dimen name=&quot;sp_20&quot;>20sp&lt;/dimen>"
+        errorLine2="           ~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/dimens.xml"
+            line="9"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.dimen.dp_300` appears to be unused"
+        errorLine1="    &lt;dimen name=&quot;dp_300&quot;>300dp&lt;/dimen>"
+        errorLine2="           ~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/dimens.xml"
+            line="10"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.dimen.nav_header_height` appears to be unused"
+        errorLine1="    &lt;dimen name=&quot;nav_header_height&quot;>140dp&lt;/dimen>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/dimens.xml"
+            line="12"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.dimen.text_margin` appears to be unused"
+        errorLine1="    &lt;dimen name=&quot;text_margin&quot;>16dp&lt;/dimen>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/dimens.xml"
+            line="15"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.dimen.dp_270` appears to be unused"
+        errorLine1="    &lt;dimen name=&quot;dp_270&quot;>270dp&lt;/dimen>"
+        errorLine2="           ~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/dimens.xml"
+            line="16"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.dimen.tiny_text_size` appears to be unused"
+        errorLine1="    &lt;dimen name=&quot;tiny_text_size&quot;>8sp&lt;/dimen>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/dimens.xml"
+            line="18"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.dimen.small_text_size` appears to be unused"
+        errorLine1="    &lt;dimen name=&quot;small_text_size&quot;>10sp&lt;/dimen>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/dimens.xml"
+            line="19"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.dimen.smaller_text_size` appears to be unused"
+        errorLine1="    &lt;dimen name=&quot;smaller_text_size&quot;>12sp&lt;/dimen>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/dimens.xml"
+            line="20"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.dimen.medium_text_size` appears to be unused"
+        errorLine1="    &lt;dimen name=&quot;medium_text_size&quot;>15sp&lt;/dimen>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/dimens.xml"
+            line="22"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.dimen.bigger_text_size` appears to be unused"
+        errorLine1="    &lt;dimen name=&quot;bigger_text_size&quot;>16sp&lt;/dimen>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/dimens.xml"
+            line="23"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.dimen.middle_text_size` appears to be unused"
+        errorLine1="    &lt;dimen name=&quot;middle_text_size&quot;>17sp&lt;/dimen>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/dimens.xml"
+            line="24"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.dimen.extra_big_text_size` appears to be unused"
+        errorLine1="    &lt;dimen name=&quot;extra_big_text_size&quot;>22sp&lt;/dimen>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/dimens.xml"
+            line="27"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.raw.floating_button` appears to be unused">
+        <location
+            file="src/main/res/raw/floating_button.json"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.ic_arrow_back_white_24dp` appears to be unused"
+        errorLine1="&lt;vector xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;"
+        errorLine2="^">
+        <location
+            file="src/main/res/drawable/ic_arrow_back_white_24dp.xml"
+            line="1"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.ic_baseline_arrow_back_ios_24` appears to be unused"
+        errorLine1="&lt;vector android:autoMirrored=&quot;true&quot; android:height=&quot;24dp&quot;"
+        errorLine2="^">
+        <location
+            file="src/main/res/drawable/ic_baseline_arrow_back_ios_24.xml"
+            line="1"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.ic_gallery` appears to be unused">
+        <location
+            file="src/main/res/drawable/ic_gallery.png"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.ic_launcher_background` appears to be unused"
+        errorLine1="&lt;vector xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;"
+        errorLine2="^">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="2"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.ic_launcher_foreground` appears to be unused"
+        errorLine1="&lt;vector xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;"
+        errorLine2="^">
+        <location
+            file="src/main/res/drawable/ic_launcher_foreground.xml"
+            line="2"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.ic_location` appears to be unused"
+        errorLine1="&lt;vector xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;"
+        errorLine2="^">
+        <location
+            file="src/main/res/drawable/ic_location.xml"
+            line="1"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.ic_profile` appears to be unused"
+        errorLine1="&lt;vector xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;"
+        errorLine2="^">
+        <location
+            file="src/main/res/drawable/ic_profile.xml"
+            line="1"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.layout.layout_loading_dialog` appears to be unused"
+        errorLine1="&lt;androidx.constraintlayout.widget.ConstraintLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;"
+        errorLine2="^">
+        <location
+            file="src/main/res/layout/layout_loading_dialog.xml"
+            line="2"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.outline_favorite_24` appears to be unused"
+        errorLine1="&lt;vector xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;"
+        errorLine2="^">
+        <location
+            file="src/main/res/drawable/outline_favorite_24.xml"
+            line="1"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.outline_photo_size_select_actual_24` appears to be unused"
+        errorLine1="&lt;vector xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;"
+        errorLine2="^">
+        <location
+            file="src/main/res/drawable/outline_photo_size_select_actual_24.xml"
+            line="1"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.profile` appears to be unused"
+        errorLine1="    &lt;string name=&quot;profile&quot;>Profile&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="4"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.search_movie` appears to be unused"
+        errorLine1="    &lt;string name=&quot;search_movie&quot;>Search movie..&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="$HOME/Beasiswa/MovieZone/find/src/main/res/values/strings.xml"
+            line="4"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.no_internet_connection` appears to be unused"
+        errorLine1="    &lt;string name=&quot;no_internet_connection&quot;>No Internet Connection&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="14"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.connect_timeout` appears to be unused"
+        errorLine1="    &lt;string name=&quot;connect_timeout&quot;>Connect Timeout&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="15"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.force_update_app` appears to be unused"
+        errorLine1="    &lt;string name=&quot;force_update_app&quot;>Please update app&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="16"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.unknown_error` appears to be unused"
+        errorLine1="    &lt;string name=&quot;unknown_error&quot;>Something error, please try again later&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="18"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.ok` appears to be unused"
+        errorLine1="    &lt;string name=&quot;ok&quot;>OK&lt;/string>"
+        errorLine2="            ~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="19"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.no_data` appears to be unused"
+        errorLine1="    &lt;string name=&quot;no_data&quot;>No Data&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="22"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.something_wrong` appears to be unused"
+        errorLine1="    &lt;string name=&quot;something_wrong&quot;>Something wrong&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="23"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.divider` appears to be unused"
+        errorLine1="    &lt;string name=&quot;divider&quot;>Divider&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="39"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.style.Base_Theme_MyMovie` appears to be unused"
+        errorLine1="    &lt;style name=&quot;Base.Theme.MyMovie&quot; parent=&quot;Theme.Material3.DayNight.NoActionBar&quot;>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="$HOME/Beasiswa/MovieZone/find/src/main/res/values/themes.xml"
+            line="3"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.style.Theme_MovieZone_Window` appears to be unused"
+        errorLine1="    &lt;style name=&quot;Theme.MovieZone.Window&quot;>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/themes.xml"
+            line="19"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.style.BottomSheetStyle` appears to be unused"
+        errorLine1="    &lt;style name=&quot;BottomSheetStyle&quot; parent=&quot;Widget.Design.BottomSheet.Modal&quot;>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/themes.xml"
+            line="26"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.style.SheetDialog` appears to be unused"
+        errorLine1="    &lt;style name=&quot;SheetDialog&quot; parent=&quot;Theme.Design.Light.BottomSheetDialog&quot;>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/themes.xml"
+            line="29"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.style.SettingsTextValueStyle` appears to be unused"
+        errorLine1="    &lt;style name=&quot;SettingsTextValueStyle&quot;>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/themes.xml"
+            line="48"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.layout.view_empty` appears to be unused"
+        errorLine1="&lt;RelativeLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;"
+        errorLine2="^">
+        <location
+            file="src/main/res/layout/view_empty.xml"
+            line="2"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.layout.view_error` appears to be unused"
+        errorLine1="&lt;RelativeLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;"
+        errorLine2="^">
+        <location
+            file="src/main/res/layout/view_error.xml"
+            line="2"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="MonochromeLauncherIcon"
+        message="The application adaptive icon is missing a monochrome tag"
+        errorLine1="&lt;adaptive-icon xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;>"
+        errorLine2="^">
+        <location
+            file="src/main/res/mipmap-anydpi-v26/ic_launcher.xml"
+            line="2"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="MonochromeLauncherIcon"
+        message="The application adaptive roundIcon is missing a monochrome tag"
+        errorLine1="&lt;adaptive-icon xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;>"
+        errorLine2="^">
+        <location
+            file="src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml"
+            line="2"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="IconLocation"
+        message="Found bitmap drawable `res/drawable/bg_transparen.png` in densityless folder">
+        <location
+            file="src/main/res/drawable/bg_transparen.png"/>
+    </issue>
+
+    <issue
+        id="IconLocation"
+        message="Found bitmap drawable `res/drawable/ic_gallery.png` in densityless folder">
+        <location
+            file="src/main/res/drawable/ic_gallery.png"/>
+    </issue>
+
+    <issue
+        id="IconLocation"
+        message="Found bitmap drawable `res/drawable/image_dicoding.webp` in densityless folder">
+        <location
+            file="src/main/res/drawable/image_dicoding.webp"/>
+    </issue>
+
+    <issue
+        id="RtlHardcoded"
+        message="Consider replacing `android:layout_marginRight` with `android:layout_marginEnd=&quot;24dp&quot;` to better support right-to-left layouts"
+        errorLine1="        android:layout_marginRight=&quot;24dp&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_settings.xml"
+            line="123"
+            column="9"/>
+    </issue>
+
+</issues>

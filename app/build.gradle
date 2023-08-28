@@ -1,0 +1,56 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+}
+apply from: '../shared_dependencies.gradle'
+android {
+    namespace 'smk.adzikro.moviezone'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "smk.adzikro.moviezone"
+        minSdk 24
+        targetSdk 34
+        versionCode 10
+        versionName "0.1.8(beta)"
+
+
+        buildConfigField "String", "IMG_SMALL", '"https://image.tmdb.org/t/p/w200"'
+        buildConfigField "String", "IMG_LARGE", '"https://image.tmdb.org/t/p/w500"'
+        buildConfigField "String", "IMG_ORIGINAL", '"https://image.tmdb.org/t/p/original"'
+        multiDexEnabled = true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        buildConfig  true
+        viewBinding true
+    }
+    dynamicFeatures = [':find']
+    lint {
+        baseline = file("lint-baseline.xml")
+        abortOnError false
+    }
+}
+
+dependencies {
+    implementation project(":core")
+    implementation "androidx.core:core-splashscreen:1.0.1"
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+}

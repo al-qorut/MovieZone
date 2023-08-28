@@ -1,0 +1,38 @@
+plugins {
+    id 'com.android.dynamic-feature'
+    id 'org.jetbrains.kotlin.android'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+}
+apply from: '../shared_dependencies.gradle'
+android {
+    namespace 'smk.adzikro.moviezone.findmovie'
+    compileSdk 33
+
+    defaultConfig {
+        minSdk 24
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+           // proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles 'proguard-rules.pro'
+        }
+    }
+    buildFeatures {
+        viewBinding true
+    }
+    hilt {
+        enableAggregatingTask = true
+    }
+
+}
+
+dependencies {
+    implementation project(":app")
+    implementation project(":core")
+
+}

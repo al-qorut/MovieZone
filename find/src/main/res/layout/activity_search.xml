@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SearchActivity">
+    <smk.adzikro.moviezone.ui.customview.AdzSearchMenu
+        android:id="@+id/find_movie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list_movie"
+        android:background="@color/dark_grey"
+        android:layout_width="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        tools:listitem="@layout/item_movie"
+        android:layout_height="match_parent"/>
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/find_movie"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include layout="@layout/shimmer_item_movie"/>
+
+            <include layout="@layout/shimmer_item_movie"/>
+
+        </LinearLayout>
+    </com.facebook.shimmer.ShimmerFrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
