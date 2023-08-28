@@ -1,4 +1,4 @@
-# MovieZoneKotlin
+# MovieZone
 [![al-qorut](https://circleci.com/gh/al-qorut/MovieZone.svg?style=shield)](https://circleci.com/gh/al-qorut/MovieZone)
 
 TheMovieDb with kotlin
