@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         binding.apply {
             bottomNav.setupWithNavController(nav)
             btnSearchMovie.setOnClickListener {
-                showSearch("co")
+                showSearch("")
             }
         }
     }
