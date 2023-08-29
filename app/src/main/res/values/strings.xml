@@ -38,5 +38,8 @@
     <string name="search">Search</string>
     <string name="divider">Divider</string>
     <string name="favorite">Favorite</string>
+    <string name="power_connected">Power connected</string>
+    <string name="power_disconnected">Power disconnected!</string>
+    <string name="no_movie">No Movie</string>
 
 </resources>

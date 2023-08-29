@@ -17,6 +17,7 @@
         android:layout_marginTop="?attr/actionBarSize"
         tools:listitem="@layout/item_movie"
         android:layout_height="match_parent"/>
+
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/shimmer"
         android:layout_width="0dp"
@@ -38,4 +39,12 @@
 
         </LinearLayout>
     </com.facebook.shimmer.ShimmerFrameLayout>
+    <include
+        android:id="@+id/view_empty"
+        layout="@layout/view_empty"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

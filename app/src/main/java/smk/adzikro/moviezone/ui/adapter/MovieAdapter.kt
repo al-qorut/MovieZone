@@ -6,15 +6,17 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.appcompat.widget.AppCompatRatingBar
 import androidx.core.content.ContextCompat
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import smk.adzikro.moviezone.BuildConfig
 import smk.adzikro.moviezone.R
 import smk.adzikro.moviezone.core.domain.model.Movie
-import smk.adzikro.moviezone.core.utils.debug
+import smk.adzikro.moviezone.core.utils.options
 import smk.adzikro.moviezone.databinding.ItemMoviesBinding
 
 class MovieAdapter(
@@ -42,12 +44,13 @@ class MovieAdapter(
             binding.apply {
                 Glide.with(itemView.context)
                     .load(BuildConfig.IMG_SMALL.plus(movie.poster_path))
+                    .transition(DrawableTransitionOptions.withCrossFade())
+                    .apply(options)
                     .into(ivItemPhoto)
                 tvItemName.text = movie.title
                 tvItemDescription.text = movie.overview
                 tvItemDate.text = movie.release_date
                 val rating = (movie.vote_average?.toFloat() ?: 0f) * 0.5f
-                debug("Rating ${rating} dikali ${movie.vote_average?.toFloat()}")
                 valueRating.rating = rating
                 txRating.text = movie.vote_average.toString()
                 val favo = if(movie.favorite)
@@ -66,7 +69,8 @@ class MovieAdapter(
                         tvItemDescription,
                         tvItemName,
                         tvItemDate,
-                        imgFavorite
+                        imgFavorite,
+                        valueRating
                     )
                 }
             }
@@ -80,7 +84,8 @@ class MovieAdapter(
             desc: TextView,
             name: TextView,
             date: TextView,
-            favo : AppCompatImageView
+            favo : AppCompatImageView,
+            valueRating : AppCompatRatingBar
         )
     }
 

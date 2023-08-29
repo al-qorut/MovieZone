@@ -6,12 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.widget.AppCompatImageView
+import androidx.appcompat.widget.AppCompatRatingBar
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import smk.adzikro.moviezone.BuildConfig
 import smk.adzikro.moviezone.core.domain.model.Movie
+import smk.adzikro.moviezone.core.utils.options
 import smk.adzikro.moviezone.databinding.ItemMoviesBinding
 
 class MoviesAdapter( private val onItemClickCallback: OnItemClickCallback
@@ -24,6 +28,8 @@ class MoviesAdapter( private val onItemClickCallback: OnItemClickCallback
             binding.apply {
                 Glide.with(itemView.context)
                     .load(BuildConfig.IMG_SMALL.plus(movie?.poster_path))
+                    .transition(DrawableTransitionOptions.withCrossFade())
+                    .apply(options)
                     .into(ivItemPhoto)
                 tvItemName.text = movie?.title
                 tvItemDescription.text = movie?.overview
@@ -37,7 +43,9 @@ class MoviesAdapter( private val onItemClickCallback: OnItemClickCallback
                         ivItemPhoto,
                         tvItemDescription,
                         tvItemName,
-                        tvItemDate
+                        tvItemDate,
+                        imgFavorite,
+                        valueRating
                     )
                 }
             }
@@ -57,7 +65,7 @@ class MoviesAdapter( private val onItemClickCallback: OnItemClickCallback
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.bind(differ.currentList[position])
-        holder.setIsRecyclable(false)
+        holder.setIsRecyclable(true)
     }
 
     interface OnItemClickCallback {
@@ -66,7 +74,9 @@ class MoviesAdapter( private val onItemClickCallback: OnItemClickCallback
             image: ImageView,
             desc: TextView,
             name: TextView,
-            date: TextView
+            date: TextView,
+            favo : AppCompatImageView,
+            valueRating : AppCompatRatingBar
         )
     }
 

@@ -3,11 +3,14 @@ package smk.adzikro.moviezone.findmovie
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.widget.AppCompatImageView
+import androidx.appcompat.widget.AppCompatRatingBar
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
 import androidx.core.view.isVisible
@@ -70,6 +73,7 @@ class SearchActivity : AppCompatActivity(), MoviesAdapter.OnItemClickCallback {
     private fun setupView() {
         val data = intent.getStringExtra(SEARCH)
         binding?.apply {
+            binding?.viewEmpty?.root?.visibility = View.VISIBLE
             findMovie.getToolbar().inflateMenu(R.menu.home_menu)
             findMovie.toggleHideOnScroll(false)
             findMovie.setupMenu()
@@ -83,9 +87,13 @@ class SearchActivity : AppCompatActivity(), MoviesAdapter.OnItemClickCallback {
             }
 
             findMovie.onSearchTextChangedListener = { text ->
-                searchMovie(text)
+                if(text.isNotEmpty()) {
+                    searchMovie(text)
+                }
             }
-
+            findMovie.getToolbar().menu.apply {
+                findItem(R.id.action_setting).isVisible = false
+            }
             findMovie.getToolbar().setOnMenuItemClickListener { menuItem ->
 
 
@@ -118,8 +126,9 @@ class SearchActivity : AppCompatActivity(), MoviesAdapter.OnItemClickCallback {
                 is Resource.Success -> {
                     isOnLoading(false)
                     movieAdapter.differ.submitList(it.data)
+                    binding?.viewEmpty?.root?.visibility = View.INVISIBLE
                 }
-
+                is Resource.Empty ->binding?.viewEmpty?.root?.visibility = View.VISIBLE
                 is Resource.Error -> {
                     isOnLoading(false)
                     Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
@@ -139,20 +148,28 @@ class SearchActivity : AppCompatActivity(), MoviesAdapter.OnItemClickCallback {
         image: ImageView,
         desc: TextView,
         name: TextView,
-        date: TextView
+        date: TextView,
+        favo : AppCompatImageView,
+        valueRating : AppCompatRatingBar
     ) {
         val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
             this,
             Pair(desc, "description"),
             Pair(image, "image"),
             Pair(name, "name"),
-            Pair(date, "date")
+            Pair(date, "date"),
+            Pair(valueRating, "rating"),
+            Pair(favo, "favo")
         )
         val intent = Intent(this, DetailActivity::class.java)
         intent.putExtra(DetailActivity.DETAIL, movie)
         startActivity(intent, options.toBundle())
     }
-
+    override fun onDestroy() {
+        super.onDestroy()
+        movieAdapter.differ.submitList(null)
+        _binding = null
+    }
     companion object {
         const val SEARCH = "search"
     }

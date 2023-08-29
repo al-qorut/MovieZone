@@ -3,13 +3,12 @@ package smk.adzikro.moviezone.core.domain.repository
 import androidx.paging.PagingData
 import kotlinx.coroutines.flow.Flow
 import smk.adzikro.moviezone.core.data.Resource
-import smk.adzikro.moviezone.core.data.source.remote.response.ApiResponse
 import smk.adzikro.moviezone.core.domain.model.Actor
 import smk.adzikro.moviezone.core.domain.model.Movie
 
 
 interface IMovieRepository {
-    fun getMovie(hashMap: HashMap<String, String> = HashMap()) : Flow<Resource<List<Movie>>>
+  //  fun getMovie(hashMap: HashMap<String, String> = HashMap()) : Flow<Resource<List<Movie>>>
     fun searchMovie(hashMap: HashMap<String, String>) : Flow<Resource<List<Movie>>>
     fun getActor(movieId :String?) : Flow<Resource<List<Actor>>>
 

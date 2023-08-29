@@ -6,6 +6,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.Cache
+import okhttp3.CertificatePinner
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -38,6 +39,12 @@ object NetworkModule {
             level = if (isDevMode) HttpLoggingInterceptor.Level.BODY
             else HttpLoggingInterceptor.Level.NONE
         }
+    var hostname = "api.themoviedb.org"
+
+    @Singleton
+    private var certificatePinner = CertificatePinner.Builder()
+        .add(hostname, "sha256/5VLcahb6x4EvvFrCF2TePZulWqrLHS2jCg9Ywv6JHog=")
+        .build()
 
     @Singleton
     @Provides
@@ -66,6 +73,7 @@ object NetworkModule {
             .connectTimeout(TIMEOUT, TimeUnit.SECONDS)
             .readTimeout(TIMEOUT, TimeUnit.SECONDS)
             .writeTimeout(TIMEOUT, TimeUnit.SECONDS)
+            .certificatePinner(certificatePinner)
             .apply {
                 addInterceptor(logging)
                 addInterceptor(header)

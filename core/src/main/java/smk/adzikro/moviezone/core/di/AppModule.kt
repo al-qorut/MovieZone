@@ -13,6 +13,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import net.sqlcipher.database.SQLiteDatabase
+import net.sqlcipher.database.SupportFactory
 import smk.adzikro.moviezone.core.utils.constant.Constants
 import smk.adzikro.moviezone.core.data.source.local.datastore.AppPrefs
 import smk.adzikro.moviezone.core.data.source.local.datastore.PrefHelper
@@ -47,9 +49,14 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun provideAppDatabase(context: Context): MovieDatabase =
-        Room.databaseBuilder(context, MovieDatabase::class.java, Constants.DATABASE_NAME)
+    fun provideAppDatabase(context: Context): MovieDatabase {
+        val passphrase: ByteArray = SQLiteDatabase.getBytes("Raja Patih".toCharArray())
+        val factory = SupportFactory(passphrase)
+        return Room.databaseBuilder(context, MovieDatabase::class.java, Constants.DATABASE_NAME)
+            .fallbackToDestructiveMigration()
+            .openHelperFactory(factory)
             .build()
+    }
 
     @Singleton
     @Provides

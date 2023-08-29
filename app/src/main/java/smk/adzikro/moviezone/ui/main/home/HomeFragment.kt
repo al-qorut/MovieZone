@@ -5,18 +5,13 @@ import android.os.Bundle
 import android.view.*
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.appcompat.widget.AppCompatRatingBar
 import androidx.core.app.ActivityOptionsCompat
-import androidx.core.content.ContextCompat
 import androidx.core.util.Pair
-import androidx.core.view.MenuHost
-import androidx.core.view.MenuProvider
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
 import androidx.paging.PagingData
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -30,9 +25,7 @@ import smk.adzikro.moviezone.core.utils.debug
 import smk.adzikro.moviezone.databinding.FragmentHomeBinding
 import smk.adzikro.moviezone.ui.adapter.LoadingStateAdapter
 import smk.adzikro.moviezone.ui.adapter.MovieAdapter
-import smk.adzikro.moviezone.ui.adapter.MoviesAdapter
 import smk.adzikro.moviezone.ui.detail.DetailActivity
-import smk.adzikro.moviezone.ui.main.MainActivity
 
 
 @AndroidEntryPoint
@@ -108,14 +101,22 @@ class HomeFragment : Fragment(), MovieAdapter.OnItemClickCallback {
     }
 
     override fun onItemClicked(
-        movie: Movie?, image: ImageView, desc: TextView, name: TextView, date: TextView, favo : AppCompatImageView
+        movie: Movie?,
+        image: ImageView,
+        desc: TextView,
+        name: TextView,
+        date: TextView,
+        favo : AppCompatImageView,
+        valueRating : AppCompatRatingBar
     ) {
         val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
             requireActivity(),
             Pair(desc, "description"),
             Pair(image, "image"),
             Pair(name, "name"),
-            Pair(date, "date")
+            Pair(date, "date"),
+            Pair(valueRating, "rating"),
+            Pair(favo, "favo")
         )
         favo.setOnClickListener {
             debug("click favorite")

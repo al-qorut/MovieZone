@@ -10,12 +10,10 @@ import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
-import smk.adzikro.moviezone.core.data.NetworkBoundResource
 import smk.adzikro.moviezone.core.data.Resource
 import smk.adzikro.moviezone.core.data.source.local.LocalDataSource
 import smk.adzikro.moviezone.core.data.source.remote.RemoteDataSource
 import smk.adzikro.moviezone.core.data.source.remote.response.ApiResponse
-import smk.adzikro.moviezone.core.data.source.remote.response.MovieListRespon
 import smk.adzikro.moviezone.core.domain.model.Actor
 import smk.adzikro.moviezone.core.domain.model.Movie
 import smk.adzikro.moviezone.core.domain.repository.IMovieRepository
@@ -29,27 +27,6 @@ class MovieRepository @Inject constructor(
     private val appExecutors: AppExecutors
 ) : IMovieRepository {
 
-    override fun getMovie(
-        hashMap: HashMap<String, String>
-    ): Flow<Resource<List<Movie>>> =
-        object : NetworkBoundResource<List<Movie>, List<MovieListRespon>>() {
-            override fun loadFromDB(): Flow<List<Movie>> {
-                return localDataSource.getMovie().map {
-                    DataMapper.mapEntityToDomain(it)
-                }
-            }
-
-            override suspend fun createCall(): Flow<ApiResponse<List<MovieListRespon>>> =
-                remoteDataSource.getMovie(hashMap)
-
-            override suspend fun saveCallResult(data: List<MovieListRespon>) {
-                val movieItem = DataMapper.mapResponseToEntity(data)
-                localDataSource.insertData(movieItem)
-            }
-
-            override fun shouldFetch(data: List<Movie>?): Boolean =
-                data == null || data.isEmpty()
-        }.asFlow()
 
     override fun searchMovie(hashMap: HashMap<String, String>): Flow<Resource<List<Movie>>> = flow {
         emit(Resource.Loading())
@@ -59,7 +36,7 @@ class MovieRepository @Inject constructor(
                 emit(Resource.Success(data))
             }
 
-            is ApiResponse.Empty -> emit(Resource.Loading())
+            is ApiResponse.Empty -> emit(Resource.Empty())
             is ApiResponse.Error -> emit(Resource.Error(apiResponse.errorMessage))
         }
     }
@@ -72,7 +49,7 @@ class MovieRepository @Inject constructor(
                 emit(Resource.Success(data))
             }
 
-            is ApiResponse.Empty -> emit(Resource.Loading())
+            is ApiResponse.Empty -> emit(Resource.Empty())
             is ApiResponse.Error -> emit(Resource.Error(apiResponse.errorMessage))
         }
     }

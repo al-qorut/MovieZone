@@ -14,9 +14,6 @@ class HomeViewModel @Inject constructor(
     private val pref : PrefRepository
 ) : ViewModel() {
 
-    fun getMovie(hashMap: HashMap<String, String>) =
-        movieUseCase.getMovie(hashMap).asLiveData()
-
     fun getParams() = pref.getParams()
 
     fun getMovieAll(hashMap: HashMap<String, String>) =

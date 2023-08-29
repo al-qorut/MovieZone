@@ -7,8 +7,10 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import smk.adzikro.moviezone.BuildConfig
 import smk.adzikro.moviezone.core.domain.model.Actor
+import smk.adzikro.moviezone.core.utils.options
 import smk.adzikro.moviezone.databinding.ItemCastBinding
 
 class ActorAdapter : RecyclerView.Adapter<ActorAdapter.ActorHolder>() {
@@ -20,6 +22,8 @@ class ActorAdapter : RecyclerView.Adapter<ActorAdapter.ActorHolder>() {
             binding.apply {
                 Glide.with(binding.root)
                     .load(BuildConfig.IMG_SMALL.plus(actor.profile_path))
+                    .transition(DrawableTransitionOptions.withCrossFade())
+                    .apply(options)
                     .into(imageCast)
             }
         }

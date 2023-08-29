@@ -1,7 +1,10 @@
 package smk.adzikro.moviezone.ui.main
 
 import android.animation.ObjectAnimator
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -22,19 +25,21 @@ import smk.adzikro.moviezone.ui.MainViewModel
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var broadcastReceiver: BroadcastReceiver
+    private var _binding: ActivityMainBinding ? = null
+    private val binding get() = _binding
     private lateinit var content: View
     private val viewModel by viewModels<MainViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        _binding = ActivityMainBinding.inflate(layoutInflater)
         window.setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE)
-        setContentView(binding.root)
+        setContentView(binding?.root)
         splashScreen()
         setupView()
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.main_nav_host) as NavHostFragment
         val nav = navHostFragment.navController
-        binding.apply {
+        binding?.apply {
             bottomNav.setupWithNavController(nav)
             btnSearchMovie.setOnClickListener {
                 showSearch("")
@@ -73,23 +78,24 @@ class MainActivity : AppCompatActivity() {
         }
     }
     private fun setupView() {
-            binding.menuMain.getToolbar().inflateMenu(R.menu.home_menu)
-            binding.menuMain.toggleHideOnScroll(false)
-            binding.menuMain.setupMenu()
+        binding?.apply {
+            menuMain.getToolbar().inflateMenu(R.menu.home_menu)
+            menuMain.toggleHideOnScroll(false)
+            menuMain.setupMenu()
 
-            binding.menuMain.onSearchClosedListener = {
+            menuMain.onSearchClosedListener = {
                 //getAllFragments().forEach {
                 //    it?.searchQueryChanged("")
-               // }
+                // }
             }
 
-            binding.menuMain.onSearchTextChangedListener = { text ->
-               if(text.length>=3){
-                   showSearch(text)
-               }
+            menuMain.onSearchTextChangedListener = { text ->
+                if (text.length >= 3) {
+                    showSearch(text)
+                }
             }
 
-            binding.menuMain.getToolbar().setOnMenuItemClickListener { menuItem ->
+            menuMain.getToolbar().setOnMenuItemClickListener { menuItem ->
 
 
                 when (menuItem.itemId) {
@@ -99,6 +105,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 return@setOnMenuItemClickListener true
             }
+        }
     }
     fun showSetting(){
         val navController = findNavController(R.id.main_nav_host)
@@ -106,9 +113,20 @@ class MainActivity : AppCompatActivity() {
         navController.navigate(R.id.settingsFragment)
     }
 
+    override fun onStart() {
+        super.onStart()
+        registerBroadCastReceiver()
+    }
 
+    override fun onStop() {
+        super.onStop()
+        unregisterReceiver(broadcastReceiver)
+    }
 
-
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
     private fun showSearch(query:String){
         val uri = Uri.parse("movieapp://search")
         val intent = Intent(Intent.ACTION_VIEW, uri)
@@ -116,6 +134,25 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-
+    private fun registerBroadCastReceiver() {
+        broadcastReceiver = object : BroadcastReceiver() {
+            override fun onReceive(context: Context, intent: Intent) {
+                when (intent.action) {
+                    Intent.ACTION_POWER_CONNECTED -> {
+                        binding?.menuMain?.updateHintText(getString(R.string.power_connected))
+                    }
+                    Intent.ACTION_POWER_DISCONNECTED -> {
+                        binding?.menuMain?.updateHintText(getString(R.string.power_disconnected))
+                    }
+                }
+            }
+        }
+        val intentFilter = IntentFilter()
+        intentFilter.apply {
+            addAction(Intent.ACTION_POWER_CONNECTED)
+            addAction(Intent.ACTION_POWER_DISCONNECTED)
+        }
+        registerReceiver(broadcastReceiver, intentFilter)
+    }
 
 }

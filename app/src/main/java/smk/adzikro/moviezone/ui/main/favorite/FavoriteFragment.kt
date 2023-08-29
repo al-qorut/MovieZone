@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatImageView
+import androidx.appcompat.widget.AppCompatRatingBar
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
 import androidx.core.view.isVisible
@@ -64,6 +66,7 @@ class FavoriteFragment : Fragment(), FavoriteAdapter.OnItemClickCallback {
     private val movieObserver = Observer<List<Movie>> {
         isOnLoading(false)
         favoAdapter.differ.submitList(it)
+        binding?.viewEmpty?.root?.visibility = if (it.isNotEmpty()) View.GONE else View.VISIBLE
     }
 
     private fun isOnLoading(isLoading: Boolean) {
@@ -79,14 +82,22 @@ class FavoriteFragment : Fragment(), FavoriteAdapter.OnItemClickCallback {
     }
 
     override fun onItemClicked(
-        movie: Movie?, image: ImageView, desc: TextView, name: TextView, date: TextView
+        movie: Movie?,
+        image: ImageView,
+        desc: TextView,
+        name: TextView,
+        date: TextView,
+        favo : AppCompatImageView,
+        valueRating : AppCompatRatingBar
     ) {
         val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
             requireActivity(),
             Pair(desc, "description"),
             Pair(image, "image"),
             Pair(name, "name"),
-            Pair(date, "date")
+            Pair(date, "date"),
+            Pair(valueRating, "rating"),
+            Pair(favo, "favo")
         )
         val intent = Intent(requireActivity(), DetailActivity::class.java)
         intent.putExtra(DetailActivity.DETAIL, movie)
