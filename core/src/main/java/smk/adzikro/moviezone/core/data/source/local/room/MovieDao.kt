@@ -12,7 +12,7 @@ import smk.adzikro.moviezone.core.data.source.local.entity.MovieItem
 
 @Dao
 interface MovieDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertData(data: List<MovieItem>)
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
@@ -37,6 +37,6 @@ interface MovieDao {
     @Update
     fun update(movie: MovieItem)
 
-    @Query("DELETE FROM movie")
+    @Query("DELETE FROM movie where favorite=0")
     suspend fun deleteAll()
 }

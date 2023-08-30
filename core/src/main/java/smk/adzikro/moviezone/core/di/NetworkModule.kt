@@ -75,7 +75,7 @@ object NetworkModule {
             .writeTimeout(TIMEOUT, TimeUnit.SECONDS)
             .certificatePinner(certificatePinner)
             .apply {
-                addInterceptor(logging)
+               // addInterceptor(logging)
                 addInterceptor(header)
             }
             .build()

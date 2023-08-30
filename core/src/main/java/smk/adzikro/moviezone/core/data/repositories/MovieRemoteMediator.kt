@@ -53,7 +53,7 @@ class MovieRemoteMediator(
             local.getDatabase().withTransaction {
                 if (loadType == LoadType.REFRESH) {
                     local.getRemoteKeysDao().deleteRemoteKeys()
-                   // local.getDatabase().getMovieDao().deleteAll()
+                    local.getDatabase().getMovieDao().deleteAll()
                 }
 
                 val prevKey = if (page == 1) null else page - 1
