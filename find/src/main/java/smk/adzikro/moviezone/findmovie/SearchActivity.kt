@@ -32,7 +32,7 @@ class SearchActivity : AppCompatActivity(), MoviesAdapter.OnItemClickCallback {
 
     private var _binding : ActivitySearchBinding? = null
     private lateinit var movieAdapter: MoviesAdapter
-    private val binding get() = _binding
+    private val binding get() = _binding!!
 
     @Inject
     lateinit var factory: SearchViewModelFactory
@@ -56,10 +56,10 @@ class SearchActivity : AppCompatActivity(), MoviesAdapter.OnItemClickCallback {
             WindowManager.LayoutParams.FLAG_SECURE
         )
         _binding = ActivitySearchBinding.inflate(layoutInflater)
-        setContentView(binding?.root)
+        setContentView(binding.root)
         isOnLoading(false)
         movieAdapter = MoviesAdapter(this)
-        binding?.apply {
+        binding.apply {
             listMovie.apply {
                 setHasFixedSize(true)
                 layoutManager = LinearLayoutManager(context)
@@ -71,7 +71,7 @@ class SearchActivity : AppCompatActivity(), MoviesAdapter.OnItemClickCallback {
 
     private fun setupView() {
         val data = intent.getStringExtra(SEARCH)
-        binding?.apply {
+        binding.apply {
             viewEmpty.root.visibility = View.VISIBLE
             findMovie.getToolbar().inflateMenu(R.menu.home_menu)
             findMovie.toggleHideOnScroll(false)
@@ -119,9 +119,9 @@ class SearchActivity : AppCompatActivity(), MoviesAdapter.OnItemClickCallback {
                 is Resource.Success -> {
                     isOnLoading(false)
                     movieAdapter.differ.submitList(it.data)
-                    binding?.viewEmpty?.root?.visibility = if (it.data?.isNotEmpty()!!) View.GONE else View.VISIBLE
+                    binding.viewEmpty.root.visibility = if (it.data?.isNotEmpty()!!) View.GONE else View.VISIBLE
                 }
-                is Resource.Empty ->binding?.viewEmpty?.root?.visibility = View.VISIBLE
+                is Resource.Empty ->binding.viewEmpty.root.visibility = View.VISIBLE
                 is Resource.Error -> {
                     isOnLoading(false)
                     Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
@@ -131,10 +131,11 @@ class SearchActivity : AppCompatActivity(), MoviesAdapter.OnItemClickCallback {
     }
 
     private fun isOnLoading(isLoading: Boolean) {
-        binding?.apply {
+        binding.apply {
             shimmer.isVisible = isLoading
         }
     }
+
 
     override fun onItemClicked(
         movie: Movie?,
@@ -159,6 +160,7 @@ class SearchActivity : AppCompatActivity(), MoviesAdapter.OnItemClickCallback {
         startActivity(intent, options.toBundle())
     }
     override fun onDestroy() {
+        binding.listMovie.adapter = null
         super.onDestroy()
         movieAdapter.differ.submitList(null)
         _binding = null

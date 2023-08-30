@@ -26,14 +26,14 @@ import smk.adzikro.moviezone.databinding.ActivityDetailMovieBinding
 class DetailActivity : AppCompatActivity() {
 
     private var _binding: ActivityDetailMovieBinding? = null
-    private val binding get() = _binding
+    private val binding get() = _binding!!
     private val viewModel: DetailViewModel by viewModels()
     private lateinit var castAdapter : ActorAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityDetailMovieBinding.inflate(layoutInflater)
-        setContentView(binding?.root)
+        setContentView(binding.root)
         setUpToolbar()
         setUpView()
     }
@@ -45,7 +45,7 @@ class DetailActivity : AppCompatActivity() {
         data?:return
         viewModel.getActor(data.id).observe(this, actorObserver)
         supportActionBar?.title = data.title
-        binding?.apply {
+        binding.apply {
             textOverview.text = data.overview
             textReleaseDate.text = data.release_date
             txRating.text = data.vote_average.toString()
@@ -92,12 +92,12 @@ class DetailActivity : AppCompatActivity() {
         val fabicon = if (data.favorite)
             ContextCompat.getDrawable(this, R.drawable.ic_favorite_white_24dp)
         else ContextCompat.getDrawable(this, R.drawable.ic_favorite_border_white_24dp)
-        binding?.buttonFavorite?.setImageDrawable(fabicon)
+        binding.buttonFavorite.setImageDrawable(fabicon)
         viewModel.favoriteMovie(data)
     }
 
     private fun setUpToolbar() {
-        setSupportActionBar(binding?.toolbar)
+        setSupportActionBar(binding.toolbar)
         supportActionBar?.apply {
             setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_white_ios_24)
             setDisplayHomeAsUpEnabled(true)
@@ -130,6 +130,7 @@ class DetailActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
+        binding.recyclerCast.adapter = null
         super.onDestroy()
         castAdapter.differ.submitList(null)
         _binding = null

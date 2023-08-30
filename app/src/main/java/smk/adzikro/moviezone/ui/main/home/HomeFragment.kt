@@ -32,7 +32,7 @@ import smk.adzikro.moviezone.ui.detail.DetailActivity
 class HomeFragment : Fragment(), MovieAdapter.OnItemClickCallback {
 
     private var _binding: FragmentHomeBinding? = null
-    private val binding get() = _binding
+    private val binding get() = _binding!!
     private val homeViewModel by viewModels<HomeViewModel>()
     private lateinit var movieAdapter: MovieAdapter
     private var path = ""
@@ -40,9 +40,9 @@ class HomeFragment : Fragment(), MovieAdapter.OnItemClickCallback {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        return binding?.root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -66,7 +66,7 @@ class HomeFragment : Fragment(), MovieAdapter.OnItemClickCallback {
             }
         }
 
-        binding?.apply {
+        binding.apply {
             rvHome.apply {
                 setHasFixedSize(true)
                 layoutManager = LinearLayoutManager(context)
@@ -84,12 +84,13 @@ class HomeFragment : Fragment(), MovieAdapter.OnItemClickCallback {
     }
 
     private fun isOnLoading(isLoading: Boolean) {
-        binding?.apply {
+        binding.apply {
             shimmer.isVisible = isLoading
         }
     }
 
     override fun onDestroyView() {
+        binding.rvHome.adapter = null
         super.onDestroyView()
         _binding = null
         movieAdapter.submitData(lifecycle, PagingData.empty())

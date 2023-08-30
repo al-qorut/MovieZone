@@ -32,7 +32,7 @@ class FavoriteFragment : Fragment(), FavoriteAdapter.OnItemClickCallback {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -67,6 +67,7 @@ class FavoriteFragment : Fragment(), FavoriteAdapter.OnItemClickCallback {
     }
 
     override fun onDestroyView() {
+        binding.rvHome.adapter = null
         super.onDestroyView()
         _binding = null
     }
