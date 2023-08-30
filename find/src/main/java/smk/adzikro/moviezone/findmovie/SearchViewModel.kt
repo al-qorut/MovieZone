@@ -2,7 +2,6 @@ package smk.adzikro.moviezone.findmovie
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
-import dagger.hilt.android.lifecycle.HiltViewModel
 import smk.adzikro.moviezone.core.data.repositories.PrefRepository
 import smk.adzikro.moviezone.core.domain.usecase.MovieUseCase
 import javax.inject.Inject

@@ -27,7 +27,7 @@ data class MovieListRespon(
     val backdrop_path : String,
 
     @field:SerializedName("genre_ids")
-    val genre_ids : Array<Int>,
+    val genre_ids : List<Int>,
 
     @field:SerializedName("id")
     val id : String,

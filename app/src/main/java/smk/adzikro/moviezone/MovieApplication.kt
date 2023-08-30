@@ -3,16 +3,12 @@ package smk.adzikro.moviezone
 import android.app.Application
 import androidx.multidex.MultiDex
 import dagger.hilt.android.HiltAndroidApp
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.SupervisorJob
 import timber.log.Timber
 
 @HiltAndroidApp
 class MovieApplication : Application(){
 
-    val appScope by lazy {
-        CoroutineScope(SupervisorJob())
-    }
+
 
     override fun onCreate() {
         super.onCreate()

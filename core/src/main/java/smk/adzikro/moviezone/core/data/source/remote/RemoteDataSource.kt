@@ -17,24 +17,6 @@ class RemoteDataSource @Inject constructor(
 
 
 
-    suspend fun getMovie(hashMap: HashMap<String, String> = HashMap()):
-            Flow<ApiResponse<List<MovieListRespon>>> {
-        return flow {
-            try {
-                val response = apiService.getMovie(path = "discover/movie",hashMap = hashMap)
-                val dataArray = response.results
-                if (dataArray.isNotEmpty()) {
-                    emit(ApiResponse.Success(response.results))
-                } else {
-                    emit(ApiResponse.Empty)
-                }
-            } catch (e: Exception) {
-                emit(ApiResponse.Error(e.toString()))
-                debug("RemoteDataSource $e", )
-            }
-        }.flowOn(Dispatchers.IO)
-    }
-
     suspend fun searchMovie(hashMap: HashMap<String, String> = HashMap()):
             Flow<ApiResponse<List<MovieListRespon>>> {
         return flow {
@@ -48,7 +30,7 @@ class RemoteDataSource @Inject constructor(
                 }
             } catch (e: Exception) {
                 emit(ApiResponse.Error(e.toString()))
-                debug("RemoteDataSource $e", )
+                debug("RemoteDataSource $e" )
             }
         }.flowOn(Dispatchers.IO)
     }

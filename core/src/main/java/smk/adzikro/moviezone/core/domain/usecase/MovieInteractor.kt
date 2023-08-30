@@ -9,6 +9,8 @@ import javax.inject.Inject
 class MovieInteractor @Inject constructor(
     private val iMovieRepository: IMovieRepository
 ) : MovieUseCase{
+    override suspend fun addMovie(movie: Movie) =
+        iMovieRepository.addMovie(movie)
 
 
     override fun searchMovie(hashMap: HashMap<String, String>) =

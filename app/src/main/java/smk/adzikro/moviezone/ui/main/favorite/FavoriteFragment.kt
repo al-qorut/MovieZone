@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatRatingBar
 import androidx.core.app.ActivityOptionsCompat
@@ -15,62 +14,54 @@ import androidx.core.util.Pair
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import smk.adzikro.moviezone.core.domain.model.Movie
+import smk.adzikro.moviezone.core.utils.debug
 import smk.adzikro.moviezone.databinding.FragmentHomeBinding
 import smk.adzikro.moviezone.ui.adapter.FavoriteAdapter
 import smk.adzikro.moviezone.ui.detail.DetailActivity
 
+
 @AndroidEntryPoint
 class FavoriteFragment : Fragment(), FavoriteAdapter.OnItemClickCallback {
     private var _binding: FragmentHomeBinding? = null
-    private val binding get() = _binding
+    private val binding get() = _binding!!
     private val favoriteViewModel by viewModels<FavoriteViewModel>()
-    private lateinit var favoAdapter: FavoriteAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        return binding?.root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setUpToolbar()
         setUpView()
     }
-
-    private fun setUpToolbar() {
-        (activity as AppCompatActivity).apply {
-            //setSupportActionBar(binding?.toolbar)
-        }
-    }
-
 
 
     private fun setUpView() {
         isOnLoading(true)
-        favoriteViewModel.getFavoMovie().observe(viewLifecycleOwner, movieObserver)
-        favoAdapter = FavoriteAdapter(this)
-        binding?.rvHome?.apply {
+        val favoAdapter = FavoriteAdapter(this)
+        favoriteViewModel.getFavoMovie().observe(viewLifecycleOwner) {
+            isOnLoading(false)
+            favoAdapter.differ.submitList(it)
+            binding.viewEmpties.root.visibility = if (it.isNotEmpty()) View.GONE else View.VISIBLE
+            debug("panggil mang")
+        }
+        with(binding.rvHome) {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(context)
             adapter = favoAdapter
        }
     }
 
-    private val movieObserver = Observer<List<Movie>> {
-        isOnLoading(false)
-        favoAdapter.differ.submitList(it)
-        binding?.viewEmpty?.root?.visibility = if (it.isNotEmpty()) View.GONE else View.VISIBLE
-    }
 
     private fun isOnLoading(isLoading: Boolean) {
-        binding?.apply {
+        binding.apply {
             shimmer.isVisible = isLoading
         }
     }
@@ -78,8 +69,10 @@ class FavoriteFragment : Fragment(), FavoriteAdapter.OnItemClickCallback {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-        favoAdapter.differ.submitList(null)
     }
+
+
+
 
     override fun onItemClicked(
         movie: Movie?,
@@ -103,4 +96,5 @@ class FavoriteFragment : Fragment(), FavoriteAdapter.OnItemClickCallback {
         intent.putExtra(DetailActivity.DETAIL, movie)
         startActivity(intent, options.toBundle())
     }
+
 }

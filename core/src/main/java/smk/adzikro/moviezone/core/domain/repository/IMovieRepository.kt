@@ -8,7 +8,7 @@ import smk.adzikro.moviezone.core.domain.model.Movie
 
 
 interface IMovieRepository {
-  //  fun getMovie(hashMap: HashMap<String, String> = HashMap()) : Flow<Resource<List<Movie>>>
+    suspend fun addMovie(movie: Movie)
     fun searchMovie(hashMap: HashMap<String, String>) : Flow<Resource<List<Movie>>>
     fun getActor(movieId :String?) : Flow<Resource<List<Actor>>>
 

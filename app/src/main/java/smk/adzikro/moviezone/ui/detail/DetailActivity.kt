@@ -42,7 +42,7 @@ class DetailActivity : AppCompatActivity() {
         castAdapter = ActorAdapter()
         @Suppress("DEPRECATION")
         val data = intent.getParcelableExtra<Movie>(DETAIL)
-        if(data==null) return
+        data?:return
         viewModel.getActor(data.id).observe(this, actorObserver)
         supportActionBar?.title = data.title
         binding?.apply {

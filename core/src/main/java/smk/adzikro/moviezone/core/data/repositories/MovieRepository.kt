@@ -26,6 +26,8 @@ class MovieRepository @Inject constructor(
     private val localDataSource: LocalDataSource,
     private val appExecutors: AppExecutors
 ) : IMovieRepository {
+    override suspend fun addMovie(movie: Movie) =
+        localDataSource.addMovie(DataMapper.mapDomainToEntity(movie))
 
 
     override fun searchMovie(hashMap: HashMap<String, String>): Flow<Resource<List<Movie>>> = flow {
@@ -56,9 +58,8 @@ class MovieRepository @Inject constructor(
 
 
     override fun setFavorite(movieList: Movie) {
-        val movieItem = DataMapper.mapDomainToEntity(movieList)
         appExecutors.diskIO().execute {
-            localDataSource.setFavorite(movieItem)
+            localDataSource.setFavorite(DataMapper.mapDomainToEntity(movieList))
         }
     }
 

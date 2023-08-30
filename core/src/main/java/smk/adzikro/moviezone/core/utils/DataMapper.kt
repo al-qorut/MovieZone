@@ -82,12 +82,12 @@ object DataMapper {
     fun mapCastToActor(cast: List<Cast>):List<Actor>{
         return cast.map {
             Actor(
-                cast_id = it.cast_id,
+                castId = it.cast_id,
                 character = it.character,
                 gender = it.gender,
                 id = it.id,
                 name = it.name,
-                profile_path = it.profile_path
+                profilePath = it.profile_path
             )
         }
     }

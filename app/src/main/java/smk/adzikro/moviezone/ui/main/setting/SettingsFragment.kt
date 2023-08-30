@@ -1,7 +1,6 @@
 package smk.adzikro.moviezone.ui.main.setting
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
 import android.view.*
@@ -17,6 +16,7 @@ import androidx.lifecycle.Observer
 import dagger.hilt.android.AndroidEntryPoint
 import smk.adzikro.moviezone.R
 import smk.adzikro.moviezone.core.data.source.local.datastore.Params
+import smk.adzikro.moviezone.core.utils.debug
 import smk.adzikro.moviezone.databinding.FragmentSettingsBinding
 import java.util.*
 
@@ -26,8 +26,8 @@ class SettingsFragment : Fragment() {
     private var _binding: FragmentSettingsBinding? = null
     private val binding get() = _binding
     private val setViewModel by viewModels<SettingsViewModel>()
-    private var image_quality = "w500"
-    private var sort_by = "popularity.desc"
+    private var imgQuality = "w500"
+    private var sortBy = "popularity.desc"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,16 +43,19 @@ class SettingsFragment : Fragment() {
         setUpToolbar()
     }
     private val paramObserver = Observer<Params>{
-        when(it.SortBy){
-            "popularity.desc" -> binding?.srPopularity?.isChecked
-            "revenue.desc" -> binding?.srRevenue?.isChecked
-            "vote_average.desc" -> binding?.srVote?.isChecked
-            "release_date.desc" -> binding?.srRelease?.isChecked
+            debug("sortBy "+it.sortBy.toString())
+            debug("image "+it.imageQuality.toString())
+
+        when(it.sortBy){
+            "popularity.desc" -> binding?.srPopularity?.isChecked = true
+            "revenue.desc" -> binding?.srRevenue?.isChecked = true
+            "vote_average.desc" -> binding?.srVote?.isChecked = true
+            "release_date.desc" -> binding?.srRelease?.isChecked = true
         }
-        when(it.ImageQuality){
-            "w342" ->binding?.iqSmall?.isChecked
-            "w500" ->binding?.iqMedium?.isChecked
-            "w780" ->binding?.iqLarge?.isChecked
+        when(it.imageQuality){
+            "w342" ->binding?.iqSmall?.isChecked = true
+            "w500" ->binding?.iqMedium?.isChecked = true
+            "w780" ->binding?.iqLarge?.isChecked = true
         }
         binding?.adult?.isChecked = it.isAdult!!
     }
@@ -69,26 +72,26 @@ class SettingsFragment : Fragment() {
             }
             imageQuality.setOnCheckedChangeListener { _, checkedId ->
                 when(checkedId){
-                    R.id.iq_small -> image_quality = "w342"
-                    R.id.iq_medium -> image_quality = "w500"
-                    R.id.iq_large -> image_quality = "w780"
+                    R.id.iq_small -> imgQuality = "w342"
+                    R.id.iq_medium -> imgQuality = "w500"
+                    R.id.iq_large -> imgQuality = "w780"
                 }
             }
             selectSort.setOnCheckedChangeListener { _, checkedId ->
                 when(checkedId){
-                    R.id.sr_popularity -> sort_by = "popularity.desc"
-                    R.id.sr_revenue -> sort_by = "revenue.desc"
-                    R.id.sr_vote -> sort_by = "vote_average.desc"
-                    R.id.sr_release ->sort_by = "release_date.desc"
+                    R.id.sr_popularity -> sortBy = "popularity.desc"
+                    R.id.sr_revenue -> sortBy = "revenue.desc"
+                    R.id.sr_vote -> sortBy = "vote_average.desc"
+                    R.id.sr_release ->sortBy = "release_date.desc"
                 }
             }
         }
     }
     private fun saveParam(){
-        var params = Params(
+        val params = Params(
             binding?.adult?.isChecked,
-            sort_by,
-            image_quality,
+            sortBy,
+            imgQuality,
             Locale.getDefault().language
         )
         setViewModel.setParams(params)
@@ -122,10 +125,7 @@ class SettingsFragment : Fragment() {
                 else -> false
             }
     }
-    private fun showSearch(){
-        val uri = Uri.parse("movieapp://search")
-        startActivity(Intent(Intent.ACTION_VIEW, uri))
-    }
+
     private fun setImageEnd(drawable: Int) {
         binding?.tvLanguage?.setCompoundDrawablesWithIntrinsicBounds(
             null, null, ContextCompat.getDrawable(requireActivity(), drawable), null

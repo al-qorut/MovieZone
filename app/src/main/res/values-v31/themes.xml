@@ -25,7 +25,7 @@
         <!--        max duration is 1000ms-->
         <item name="android:windowSplashScreenAnimationDuration">1000</item>
         <!--splash screen branding image-->
-        <item name="android:windowSplashScreenBrandingImage">@drawable/image_dicoding</item>
+        <item name="android:windowSplashScreenBrandingImage">@drawable/ic_flag_id</item>
         <!--        icon background color-->
         <item name="android:windowSplashScreenIconBackgroundColor">@android:color/transparent</item>
 

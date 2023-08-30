@@ -1,10 +1,7 @@
 package smk.adzikro.moviezone.ui.main
 
 import android.animation.ObjectAnimator
-import android.content.BroadcastReceiver
-import android.content.Context
 import android.content.Intent
-import android.content.IntentFilter
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -25,7 +22,6 @@ import smk.adzikro.moviezone.ui.MainViewModel
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var broadcastReceiver: BroadcastReceiver
     private var _binding: ActivityMainBinding ? = null
     private val binding get() = _binding
     private lateinit var content: View
@@ -107,21 +103,13 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-    fun showSetting(){
+    private fun showSetting(){
         val navController = findNavController(R.id.main_nav_host)
         navController.navigateUp()
         navController.navigate(R.id.settingsFragment)
     }
 
-    override fun onStart() {
-        super.onStart()
-        registerBroadCastReceiver()
-    }
 
-    override fun onStop() {
-        super.onStop()
-        unregisterReceiver(broadcastReceiver)
-    }
 
     override fun onDestroy() {
         super.onDestroy()
@@ -134,25 +122,6 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun registerBroadCastReceiver() {
-        broadcastReceiver = object : BroadcastReceiver() {
-            override fun onReceive(context: Context, intent: Intent) {
-                when (intent.action) {
-                    Intent.ACTION_POWER_CONNECTED -> {
-                        binding?.menuMain?.updateHintText(getString(R.string.power_connected))
-                    }
-                    Intent.ACTION_POWER_DISCONNECTED -> {
-                        binding?.menuMain?.updateHintText(getString(R.string.power_disconnected))
-                    }
-                }
-            }
-        }
-        val intentFilter = IntentFilter()
-        intentFilter.apply {
-            addAction(Intent.ACTION_POWER_CONNECTED)
-            addAction(Intent.ACTION_POWER_DISCONNECTED)
-        }
-        registerReceiver(broadcastReceiver, intentFilter)
-    }
+
 
 }

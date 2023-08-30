@@ -10,7 +10,6 @@ import smk.adzikro.moviezone.core.data.source.local.entity.MovieItem
 import smk.adzikro.moviezone.core.data.source.local.entity.RemoteKeys
 import smk.adzikro.moviezone.core.data.source.remote.api.ApiParams
 import smk.adzikro.moviezone.core.data.source.remote.api.ApiService
-import smk.adzikro.moviezone.core.domain.model.Movie
 import smk.adzikro.moviezone.core.utils.DataMapper
 
 @OptIn(ExperimentalPagingApi::class)

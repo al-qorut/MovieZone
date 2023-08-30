@@ -44,8 +44,8 @@
         </LinearLayout>
     </com.facebook.shimmer.ShimmerFrameLayout>
     <include
-        android:id="@+id/view_empty"
-        layout="@layout/view_empty"
+        android:id="@+id/view_empties"
+        layout="@layout/view_empties"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

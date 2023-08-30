@@ -4,6 +4,8 @@ plugins {
     id 'dagger.hilt.android.plugin'
     id 'kotlin-parcelize'
     id 'kotlin-kapt'
+    id 'com.google.devtools.ksp'
+
 }
 apply from: '../shared_dependencies.gradle'
 android {

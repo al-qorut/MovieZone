@@ -2,7 +2,9 @@ package smk.adzikro.moviezone.ui.detail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import smk.adzikro.moviezone.core.domain.model.Movie
 import smk.adzikro.moviezone.core.domain.usecase.MovieUseCase
 import javax.inject.Inject
@@ -13,7 +15,10 @@ class DetailViewModel @Inject constructor(
 ) : ViewModel() {
 
     fun favoriteMovie(movie: Movie) =
-        movieUseCase.setFavorite(movie)
+        viewModelScope.launch {
+            movieUseCase.addMovie(movie)
+        }
+
 
 
     fun getActor(movieId: String?) =

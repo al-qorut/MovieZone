@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Context
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.content.res.Resources
-import android.graphics.BlendModeColorFilter
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
@@ -25,9 +24,11 @@ import smk.adzikro.moviezone.R
 import smk.adzikro.moviezone.databinding.MenuSearchBinding
 
 class AdzSearchMenu(context: Context, attrs: AttributeSet) : AppBarLayout(context, attrs) {
-    val MEDIUM_ALPHA = 0.5f
-    val LOWER_ALPHA = 0.25f
-    val DARK_GREY = 0xFF333333.toInt()
+    companion object {
+        const val MEDIUM_ALPHA = 0.5f
+        const val LOWER_ALPHA = 0.25f
+        const val DARK_GREY = 0xFF333333.toInt()
+    }
 
     var isSearchOpen = false
     var useArrowIcon = false

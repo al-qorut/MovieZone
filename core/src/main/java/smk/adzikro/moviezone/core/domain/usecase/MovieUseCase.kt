@@ -7,7 +7,7 @@ import smk.adzikro.moviezone.core.domain.model.Actor
 import smk.adzikro.moviezone.core.domain.model.Movie
 
 interface MovieUseCase {
-   // fun getMovie(hashMap: HashMap<String, String>) : Flow<Resource<List<Movie>>>
+    suspend fun addMovie(movie: Movie)
     fun searchMovie(hashMap: HashMap<String, String>) : Flow<Resource<List<Movie>>>
     fun getActor(movieId :String?) : Flow<Resource<List<Actor>>>
     fun setFavorite(movieList: Movie)

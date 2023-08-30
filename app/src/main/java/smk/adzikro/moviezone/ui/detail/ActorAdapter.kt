@@ -21,7 +21,7 @@ class ActorAdapter : RecyclerView.Adapter<ActorAdapter.ActorHolder>() {
         fun bind(actor: Actor) {
             binding.apply {
                 Glide.with(binding.root)
-                    .load(BuildConfig.IMG_SMALL.plus(actor.profile_path))
+                    .load(BuildConfig.IMG_SMALL.plus(actor.profilePath))
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .apply(options)
                     .into(imageCast)

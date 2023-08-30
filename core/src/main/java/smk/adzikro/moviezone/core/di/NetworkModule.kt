@@ -22,7 +22,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
-    private val TIMEOUT = 10L
+    private const val TIMEOUT = 10L
     private val isDevMode: Boolean
         get() = BuildConfig.BUILD_TYPE != "release"
 
@@ -39,7 +39,7 @@ object NetworkModule {
             level = if (isDevMode) HttpLoggingInterceptor.Level.BODY
             else HttpLoggingInterceptor.Level.NONE
         }
-    var hostname = "api.themoviedb.org"
+    private var hostname = "api.themoviedb.org"
 
     @Singleton
     private var certificatePinner = CertificatePinner.Builder()

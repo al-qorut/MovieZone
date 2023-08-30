@@ -15,7 +15,6 @@ class AppPrefs @Inject constructor(
 ) : PrefHelper {
 
     private object Key {
-        val FIRST_RUN = booleanPreferencesKey("first_run")
         val INCLUDE_ADULT = booleanPreferencesKey("include_adult")
         val IMAGE_QUALITY = stringPreferencesKey("image_quality")
         val SORT_BY = stringPreferencesKey("sort_by")
@@ -37,9 +36,9 @@ class AppPrefs @Inject constructor(
     override suspend fun setParams(params: Params) {
         dataStore.edit {
             it[INCLUDE_ADULT] = params.isAdult!!
-            it[SORT_BY] = params.SortBy!!
-            it[IMAGE_QUALITY] = params.ImageQuality!!
-            it[LANG] = params.Language!!
+            it[SORT_BY] = params.sortBy!!
+            it[IMAGE_QUALITY] = params.imageQuality!!
+            it[LANG] = params.language!!
         }
     }
 }

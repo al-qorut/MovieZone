@@ -4,6 +4,8 @@ plugins {
     id 'dagger.hilt.android.plugin'
     id 'kotlin-parcelize'
     id 'kotlin-kapt'
+    id 'com.google.devtools.ksp'
+
 }
 apply from: '../shared_dependencies.gradle'
 android {
@@ -27,8 +29,8 @@ android {
             proguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
         }
         debug{
-            minifyEnabled false
-          //  debuggable true
+            minifyEnabled true
+            debuggable true
             consumerProguardFiles 'proguard-rules.pro'
             proguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
         }
@@ -47,11 +49,13 @@ dependencies {
     //room
     def room = "2.5.2"
     implementation "androidx.room:room-runtime:$room"
-    kapt "androidx.room:room-compiler:$room"
+    ksp "androidx.room:room-compiler:$room"
     implementation "androidx.room:room-ktx:$room"
     implementation "androidx.room:room-paging:$room"
+
     implementation "net.zetetic:android-database-sqlcipher:4.4.0"
     implementation "androidx.sqlite:sqlite-ktx:2.3.1"
+
 
 
 }

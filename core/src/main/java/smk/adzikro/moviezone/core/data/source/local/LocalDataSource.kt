@@ -1,10 +1,8 @@
 package smk.adzikro.moviezone.core.data.source.local
 
-import kotlinx.coroutines.flow.map
 import smk.adzikro.moviezone.core.data.source.local.entity.MovieItem
 import smk.adzikro.moviezone.core.data.source.local.room.MovieDao
 import smk.adzikro.moviezone.core.data.source.local.room.MovieDatabase
-import smk.adzikro.moviezone.core.utils.DataMapper
 import javax.inject.Inject
 
 class LocalDataSource @Inject constructor(
@@ -13,7 +11,7 @@ class LocalDataSource @Inject constructor(
 ) {
 
 
-    fun deleteRemoteKeys() = db.getRemoteKeysDao()
+    suspend fun addMovie(movieItem: MovieItem) = movieDao.insertOrUpdate(movieItem)
     fun getRemoteKeysDao() = db.getRemoteKeysDao()
     fun setFavorite(movieItem: MovieItem) =
         movieDao.update(movieItem)

@@ -58,10 +58,10 @@ class HomeFragment : Fragment(), MovieAdapter.OnItemClickCallback {
         homeViewModel.getParams().observe(viewLifecycleOwner) { params ->
             params.let {
                 val hashMap = HashMap<String, String>()
-                hashMap[SORT_BY] = it.SortBy!!
+                hashMap[SORT_BY] = it.sortBy!!
                 hashMap[INCLUDE_ADULT] = it.isAdult.toString()
-                hashMap[LANG] = it.Language!!
-                path = getString(R.string.img_path, it.ImageQuality)
+                hashMap[LANG] = it.language!!
+                path = getString(R.string.img_path, it.imageQuality)
                 homeViewModel.getMovieAll(hashMap).observe(viewLifecycleOwner, movieObserver)
             }
         }

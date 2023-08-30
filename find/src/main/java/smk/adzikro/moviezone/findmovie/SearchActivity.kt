@@ -30,7 +30,6 @@ import javax.inject.Inject
 
 class SearchActivity : AppCompatActivity(), MoviesAdapter.OnItemClickCallback {
 
-    //private val viewModel by viewModels<SearchViewModel>()
     private var _binding : ActivitySearchBinding? = null
     private lateinit var movieAdapter: MoviesAdapter
     private val binding get() = _binding
@@ -73,17 +72,12 @@ class SearchActivity : AppCompatActivity(), MoviesAdapter.OnItemClickCallback {
     private fun setupView() {
         val data = intent.getStringExtra(SEARCH)
         binding?.apply {
-            binding?.viewEmpty?.root?.visibility = View.VISIBLE
+            viewEmpty.root.visibility = View.VISIBLE
             findMovie.getToolbar().inflateMenu(R.menu.home_menu)
             findMovie.toggleHideOnScroll(false)
             findMovie.setupMenu()
             if(!data.isNullOrEmpty()){
                 searchMovie(data)
-            }
-            findMovie.onSearchClosedListener = {
-                //getAllFragments().forEach {
-                //    it?.searchQueryChanged("")
-                // }
             }
 
             findMovie.onSearchTextChangedListener = { text ->
@@ -98,7 +92,6 @@ class SearchActivity : AppCompatActivity(), MoviesAdapter.OnItemClickCallback {
 
 
                 when (menuItem.itemId) {
-                    //R.id.action_setting -> showSetting()
                     R.id.action_logout -> finish()
                     else -> return@setOnMenuItemClickListener false
                 }
@@ -111,7 +104,7 @@ class SearchActivity : AppCompatActivity(), MoviesAdapter.OnItemClickCallback {
         viewModel.getParams().observe(this) { params ->
             params.let {
                 val hashMap = HashMap<String, String>()
-                hashMap[ApiParams.SORT_BY] = it.SortBy!!
+                hashMap[ApiParams.SORT_BY] = it.sortBy!!
                 hashMap[ApiParams.INCLUDE_ADULT] = it.isAdult.toString()
                 hashMap[ApiParams.QUERY] = query
                 viewModel.getMovie(hashMap).observe(this, movieObserver)
@@ -126,7 +119,7 @@ class SearchActivity : AppCompatActivity(), MoviesAdapter.OnItemClickCallback {
                 is Resource.Success -> {
                     isOnLoading(false)
                     movieAdapter.differ.submitList(it.data)
-                    binding?.viewEmpty?.root?.visibility = View.INVISIBLE
+                    binding?.viewEmpty?.root?.visibility = if (it.data?.isNotEmpty()!!) View.GONE else View.VISIBLE
                 }
                 is Resource.Empty ->binding?.viewEmpty?.root?.visibility = View.VISIBLE
                 is Resource.Error -> {

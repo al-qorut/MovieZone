@@ -65,7 +65,7 @@ class FavoriteAdapter (
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.bind(differ.currentList[position])
-        holder.setIsRecyclable(false)
+        holder.setIsRecyclable(true)
     }
     interface OnItemClickCallback {
         fun onItemClicked(
